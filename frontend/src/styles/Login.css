@@ -1,0 +1,140 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 1rem;
+}
+
+.login-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  max-width: 450px;
+  width: 100%;
+}
+
+.login-card h1 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .login-container {
+    padding: 20px;
+  }
+
+  .login-card {
+    padding: 40px;
+  }
+
+  .login-card h1 {
+    font-size: 24px;
+  }
+}
+
+.login-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+  min-height: 44px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.form-group input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.error-message {
+  background-color: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #fcc;
+  font-size: 14px;
+}
+
+.btn-login {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  min-height: 44px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .btn-login {
+    width: auto;
+  }
+}
+
+.btn-login:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.btn-login:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.test-credentials {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.test-credentials p {
+  margin: 5px 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.test-credentials p:first-child {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}

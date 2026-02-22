@@ -1,0 +1,43 @@
+node_modules/
+dist/
+build/
+coverage/
+.env
+.env.local
+.env.*.local
+.doc
+.github
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database
+*.sqlite
+*.sqlite3
+
+# Storage
+storage/
+uploads/
+
+# Build outputs
+*.tsbuildinfo
+
+# Package manager
+package-lock.json
+yarn.lock
+
+# OS
+Thumbs.db
+.DS_Store

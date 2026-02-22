@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: doc-access-platform-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: doc_access_platform
+      MYSQL_USER: doc_access_user
+      MYSQL_PASSWORD: secure_password
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - doc-access-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: doc-access-platform-backend
+    environment:
+      NODE_ENV: development
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USERNAME: doc_access_user
+      DB_PASSWORD: secure_password
+      DB_NAME: doc_access_platform
+      PORT: 3001
+      FRONTEND_URL: http://localhost:3000
+      STORAGE_DIR: /app/storage
+    ports:
+      - '3001:3001'
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/storage:/app/storage
+    networks:
+      - doc-access-network
+    command: npm run start:dev
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: doc-access-platform-frontend
+    environment:
+      REACT_APP_API_URL: http://localhost:3001/api
+    ports:
+      - '3000:3000'
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+    networks:
+      - doc-access-network
+    command: npm start
+
+volumes:
+  mysql_data:
+
+networks:
+  doc-access-network:
+    driver: bridge

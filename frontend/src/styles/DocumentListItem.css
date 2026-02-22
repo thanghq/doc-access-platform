@@ -1,0 +1,10 @@
+.file-selected {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
